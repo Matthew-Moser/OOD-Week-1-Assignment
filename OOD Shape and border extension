@@ -1,18 +1,18 @@
 public interface Shape {
    void draw();
 }
-public class Rectangle implements Shape {
+public class Trapazoid implements Shape {
 
    //Override
    public void draw() {
-      System.out.println("Shape: Rectangle");
+      System.out.println("Shape: Trapazoid");
    }
 }
-public class Circle implements Shape {
+public class Diamond implements Shape {
 
    //Override
    public void draw() {
-      System.out.println("Shape: Circle");
+      System.out.println("Shape: Diamond");
    }
 }
 public abstract class ShapeDecorator implements Shape {
@@ -26,37 +26,37 @@ public abstract class ShapeDecorator implements Shape {
       decoratedShape.draw();
    }	
 }
-public class RedShapeDecorator extends ShapeDecorator {
+public class BlueShapeDecorator extends ShapeDecorator {
 
-   public RedShapeDecorator(Shape decoratedShape) {
+   public BlueShapeDecorator(Shape decoratedShape) {
       super(decoratedShape);		
    }
 
    //Override
    public void draw() {
       decoratedShape.draw();	       
-      setRedBorder(decoratedShape);
+      setBlueBorder(decoratedShape);
    }
 
-   private void setRedBorder(Shape decoratedShape){
-      System.out.println("Border Color: Red");
+   private void setBlueBorder(Shape decoratedShape){
+      System.out.println("Border Color: Blue");
    }
 }
 public class DecoratorPatternDemo {
    public static void main(String[] args) {
 
-      Shape circle = new Circle();
+      Shape diamond = new Diamond();
 
-      Shape redCircle = new RedShapeDecorator(new Circle());
+      Shape trapazoid = new BlueShapeDecorator(new Trapazoid());
 
-      Shape redRectangle = new RedShapeDecorator(new Rectangle());
-      System.out.println("Circle with normal border");
-      circle.draw();
+      Shape blueTrapazoid = new BlueShapeDecorator(new Trapazoid());
+      System.out.println("Diamond with normal border");
+      diamond.draw();
 
-      System.out.println("\nCircle of red border");
-      redCircle.draw();
+      System.out.println("\nCDiamond with blue border");
+      blueDiamond.draw();
 
-      System.out.println("\nRectangle of red border");
-      redRectangle.draw();
+      System.out.println("\nTrapazoid with blue border");
+      blueTrapazoid.draw();
    }
 }
